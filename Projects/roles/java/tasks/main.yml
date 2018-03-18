@@ -1,0 +1,13 @@
+---
+
+- name: Installing java
+  yum:
+    name: "{{Java_version}}"
+    state: latest
+  become: true
+
+- name: Changing the default java verion
+  alternatives:
+    name: java
+    link: /bin/java
+    path: "{{Java_new}}"

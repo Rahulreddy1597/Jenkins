@@ -1,0 +1,23 @@
+---
+
+- name: Downloading the repo jenkins
+  get_url:
+    url: "{{Jenkins_URL}}"
+    dest: "{{Destination}}"
+  become: true
+
+- name: Imporying the GPG Key
+  rpm_key:
+    state: present
+    key: "{{GPG_Key}}"
+
+- name: Installing Jenkins
+  yum:
+    name: jenkins
+    state: present
+
+- name: start the jenkins server and enable on boot
+  service:
+    name: jenkins
+    state: started
+    enable: yes
