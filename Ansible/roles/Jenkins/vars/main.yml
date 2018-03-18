@@ -1,6 +1,1 @@
 ---
-
-jenkins:
-  URL: "http://pkg.jenkins.io/redhat-stable/jenkins.repo"
-  Destination: "/etc/yum.repos.d/jenkins.repo"
-  GPG_Key: "http://pkg.jenkins.io/redhat-stable/jenkins.io.key"

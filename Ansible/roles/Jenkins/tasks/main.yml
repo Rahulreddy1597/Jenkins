@@ -2,14 +2,14 @@
 
 - name: Downloading the repo jenkins
   get_url:
-    url: "{{jenkins.URL}}"
-    dest: "{{jenkins.Destination}}"
+    url: http://pkg.jenkins.io/redhat-stable/jenkins.repo
+    dest: /etc/yum.repos.d/jenkins.repo
   become: true
 
 - name: Imporying the GPG Key
   rpm_key:
     state: present
-    key: "{{jenkins.GPG_Key}}"
+    key: http://pkg.jenkins.io/redhat-stable/jenkins.io.key
 
 - name: Installing Jenkins
   yum:
