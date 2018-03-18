@@ -21,3 +21,19 @@
     name: jenkins
     state: started
     enable: yes
+
+- name: open management console port
+  firewalld: 
+    port=8080/tcp 
+    zone=public 
+    permanent=true 
+    state=enabled 
+    immediate=yes
+
+- name: open management console port
+  firewalld: 
+    service=http 
+    zone=public 
+    permanent=true 
+    state=enabled 
+    immediate=yes
