@@ -2,7 +2,7 @@
 
 - name: Installing java
   yum:
-    name: "{{Java_version}}"
+    name: "{{java.version}}"
     state: latest
   become: true
 
@@ -10,4 +10,4 @@
   alternatives:
     name: java
     link: /bin/java
-    path: "{{Java_new}}"
+    path: "{{java.new}}"

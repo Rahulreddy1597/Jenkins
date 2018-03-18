@@ -2,14 +2,14 @@
 
 - name: Downloading the repo jenkins
   get_url:
-    url: "{{Jenkins_URL}}"
-    dest: "{{Destination}}"
+    url: "{{jenkins.URL}}"
+    dest: "{{jenkins.Destination}}"
   become: true
 
 - name: Imporying the GPG Key
   rpm_key:
     state: present
-    key: "{{GPG_Key}}"
+    key: "{{jenkins.GPG_Key}}"
 
 - name: Installing Jenkins
   yum:
@@ -23,17 +23,17 @@
     enable: yes
 
 - name: open management console port
-  firewalld: 
-    port=8080/tcp 
-    zone=public 
-    permanent=true 
-    state=enabled 
+  firewalld:
+    port=8080/tcp
+    zone=public
+    permanent=true
+    state=enabled
     immediate=yes
 
 - name: open management console port
-  firewalld: 
-    service=http 
-    zone=public 
-    permanent=true 
-    state=enabled 
+  firewalld:
+    service=http
+    zone=public
+    permanent=true
+    state=enabled
     immediate=yes
