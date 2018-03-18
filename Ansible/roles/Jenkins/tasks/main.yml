@@ -2,38 +2,24 @@
 
 - name: Downloading the repo jenkins
   get_url:
-    url: http://pkg.jenkins.io/redhat-stable/jenkins.repo
+    url: http://pkg.jenkins-ci.org/redhat/jenkins.repo
     dest: /etc/yum.repos.d/jenkins.repo
   become: true
 
 - name: Imporying the GPG Key
   rpm_key:
     state: present
-    key: http://pkg.jenkins.io/redhat-stable/jenkins.io.key
+    key: https://pkg.jenkins.io/redhat/jenkins.io.key
+  become: true
 
 - name: Installing Jenkins
   yum:
     name: jenkins
     state: present
-
+  become: true
 - name: start the jenkins server and enable on boot
   service:
     name: jenkins
     state: started
-    enable: yes
-
-- name: open management console port
-  firewalld:
-    port=8080/tcp
-    zone=public
-    permanent=true
-    state=enabled
-    immediate=yes
-
-- name: open management console port
-  firewalld:
-    service=http
-    zone=public
-    permanent=true
-    state=enabled
-    immediate=yes
+    enabled: yes
+  become: true
