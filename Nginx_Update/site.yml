@@ -1,0 +1,7 @@
+---
+
+- name: Updating the nginx
+  host: localhost
+  roles:
+    - backup
+    - 
